@@ -29,6 +29,6 @@ mon,acclaim.edu.au,arms.rdsi.edu.au,assurance.aaf.edu.au,caudit.unisa.edu.au,clo
 
 ### Changelog:
 
-20141217 inital scraping
+20141217 initial log parsing
 
 20150114 munging by year/month and service, clumping by domainname
