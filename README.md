@@ -27,7 +27,7 @@ mon,acclaim.edu.au,arms.rdsi.edu.au,assurance.aaf.edu.au,caudit.unisa.edu.au,clo
 12,0,0,0,0,339,0,0,0,2,2,0,30,8,7,0,80,0,0,0,0,0,1,0
 ```
 
-### Changelog:
+### Major Change History
 
 20141217 initial log parsing
 
