@@ -8,7 +8,7 @@ open( IN, "<./idp-audit-2014.txt" ) or die("$!");
 
 my %datahash, %allhosts, %hostmap;
 
-# translate SP hosts into something generically friendly
+# map AAF SP hostnames into something generically friendly
 $hostmap{"caudit.unisa.edu.au"} = "caudit";
 $hostmap{"acclaim.edu.au"} = "acclaim";
 $hostmap{"researchdata.ands.org.au"} = "rda";
@@ -26,6 +26,7 @@ while( <IN> ) {
 	# my $ym = "$year,$month"; # print both year and month
 	my $ym = "$month"; # just do it for months
 	($d, $d, $hostname) = split( /\//, $url );
+	
 	if ($hostname ne "") {
 		if (exists $hostmap{$hostname}) {
 			$hostname = $hostmap{$hostname};
