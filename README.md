@@ -5,7 +5,7 @@ This Perl script summarises IdP logs into "access by domain" counts.
 Input is a stream with rows like this:
 
 ```
-20131231T141715Z|urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect|_7f3c96fb1d8a408da5e31dab1749bf|https://cloudstor.aarnet.edu.au/simplesaml/module.php/saml/sp/metadata.php/default-sp|urn:mace:shibboleth:2.0:profiles:saml2:sso|https://idp.uws.edu.au/idp/shibboleth|urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST|_3e7e3fc7f6769ab7b|USERID|urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport|eduPersonAffiliation,commonName,transientId,email,|_a87286ca5b207||
+20131231T141715Z|urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect|_PILEOFHEX_|https://cloudstor.aarnet.edu.au/simplesaml/module.php/saml/sp/metadata.php/default-sp|urn:mace:shibboleth:2.0:profiles:saml2:sso|https://idp.uws.edu.au/idp/shibboleth|urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST|_ANOTHERPILEOFHEX_|_USERID_|urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport|eduPersonAffiliation,commonName,transientId,email,|_MOREHEX_||
 ```
 
 Output is simple CSV.
