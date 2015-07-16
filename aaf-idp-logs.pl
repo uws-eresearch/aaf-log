@@ -6,18 +6,19 @@ use Data::Dumper;
 
 open( IN, "<./idp-audit-2014.txt" ) or die("$!");
 
-my %datahash, %allhosts, %hostmapping;
+my %datahash, %allhosts, %hostmap;
 
-# $hostmapping{"caudit.unisa.edu.au"} = "caudit";
-# $hostmapping{"acclaim.edu.au"} = "acclaim";
-# $hostmapping{"researchdata.ands.org.au"} = "rda";
-# $hostmapping{"www.caudit.edu.au"} = "caudit";
-# $hostmapping{"portal.aurin.org.au"} = "aurin";
-# $hostmapping{"staging.aurin.org.au"} = "aurin";
-$hostmapping{"keystone.rc.nectar.org.au"} = "nectar";
-$hostmapping{"support.rc.nectar.org.au"} = "nectar";
-$hostmapping{"sdauth.sciencedirect.com"} = "sciencedirect";
-$hostmapping{"cloudstor.aarnet.edu.au"} = "cloudstor";
+# translate SP hosts into something generically friendly
+$hostmap{"caudit.unisa.edu.au"} = "caudit";
+$hostmap{"acclaim.edu.au"} = "acclaim";
+$hostmap{"researchdata.ands.org.au"} = "rda";
+$hostmap{"www.caudit.edu.au"} = "caudit";
+$hostmap{"portal.aurin.org.au"} = "aurin";
+$hostmap{"staging.aurin.org.au"} = "aurin";
+$hostmap{"keystone.rc.nectar.org.au"} = "nectar";
+$hostmap{"support.rc.nectar.org.au"} = "nectar";
+$hostmap{"sdauth.sciencedirect.com"} = "sciencedirect";
+$hostmap{"cloudstor.aarnet.edu.au"} = "cloudstor";
 
 while( <IN> ) {
 	($date, $d, $d, $url) = split( /\|/, $_ );
@@ -26,10 +27,10 @@ while( <IN> ) {
 	my $ym = "$month"; # just do it for months
 	($d, $d, $hostname) = split( /\//, $url );
 	if ($hostname ne "") {
-		if (exists $hostmapping{$hostname}) {
-			$hostname = $hostmapping{$hostname};
+		if (exists $hostmap{$hostname}) {
+			$hostname = $hostmap{$hostname};
 		} else {
-	#		$hostname = "other"; # comment this line to see all hostnames
+#			$hostname = "other"; # uncomment this line to see all hostnames
 		}
 		$datahash{$ym}{$hostname}++;
 		$allhosts{$hostname}++;
@@ -44,9 +45,10 @@ foreach my $host (sort keys %allhosts) {
 }
 	print "\n";
 
-# print row for each year,month
+# print a row for each year,month
 foreach my $ym (sort keys %datahash) {
 	print "$ym";
+	
 	foreach my $host (sort keys %allhosts) {
 		if ($datahash{$ym}{$host} > 0) {
 			print ",$datahash{$ym}{$host}";
@@ -55,8 +57,4 @@ foreach my $ym (sort keys %datahash) {
 		}
 	}
 	print "\n";
-
-#	foreach my $hostname (sort keys %{ $datahash{$ym} } )  {
-#		print "$ym,$hostname,$datahash{$ym}{$hostname}\n";
-#	}	
 }
